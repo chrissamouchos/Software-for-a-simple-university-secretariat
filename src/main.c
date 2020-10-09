@@ -11,16 +11,11 @@
 
 #define SIZE_FACTOR 0.7 /*Factor that co-defines the size of hash table*/
 
-void usage(const char* command){
-	cyan();
-	printf("%s -i <input file> -c <config file>\n",command);
-	reset();
-}
-
 int main(int argc, char** argv){
 
 	char* input_file = NULL, *config_file = NULL;
 	int c;
+	/* -------------Get Optios of Command line--------------*/
 	while( (c = getopt(argc,argv,"i:c:")) != -1) {
 		switch(c) {
 			case 'i':
@@ -34,8 +29,9 @@ int main(int argc, char** argv){
 					return 1;
 		}	
 	}
+	/*---------------End of Options Parsing----------------*/
 
-	if(!input_file) {
+	if(!input_file){		/*Check if input file is not given, print error, terminate*/
 		usage(argv[0]);
 		red();
 		printf("Input file is mandatory, none was given\n");

@@ -1,13 +1,14 @@
-#pragma once
+/*File that contains function prototypes and data types related to student object*/
+#pragma once	/*included only once*/
 
 /*----------------------START OF STUDENT ΕΝΤΙΤΥ---------------------*/
 typedef struct{
-	int 	student_id;
+	int 	student_id;		/*unique identifier*/
 	char* 	last_name;
 	char* 	first_name;
 	int 	zip;
-	int 	year;
-	float 	gpa;
+	int 	year;			/*year of uni attentance*/
+	float 	gpa;			/*average of marks*/
 }student;
 
 typedef student* Student;

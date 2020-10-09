@@ -1,17 +1,20 @@
-#pragma once
+/*File that contains the prototypes of various functions*/
+#pragma once	/*Include only once*/
 
 #include "ADTHashtable.h"
 
 /*----------------- VARIOUS FUNCTIONS-------------------*/
-void red();
+void red();		/*Chane printing color to red 	*/
 
-void green();
+void green();	/*Chane printing color to green	*/
 
-void cyan();
+void cyan();	/*Chane printing color to cyan	*/
 
-void reset();
+void reset();	/*Reset color to default		*/
 
-int line_counter(char* input);
+int line_counter(char* input);	/*Count the lines of input file*/
 
-void read_and_insert(char* input, int number_of_lines, Headhash head);
+void read_and_insert(char* input, int number_of_lines, Headhash head);	/*Read file and insert parsed data*/
+
+void usage(const char* command);	/*Print expected format*/
 /*----------------- END OF FUNCTIONS--------------------*/

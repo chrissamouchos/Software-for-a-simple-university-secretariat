@@ -1,23 +1,23 @@
 /*-----------------------------------------------------------
 /	Implementation of basic Data Structures that are needed	/
 /	in project. Here are only the function prototypes and	/
-/	neccessary structs and data types						/
-------------------------------------------------------------*/
+/	neccessary structs and data types of hashtable 			/
+/ 	Implementation.											/
+-----------------------------------------------------------*/
 
 #pragma once			/*During compilation, include this file only once*/
 
 #include <string.h>
 #include "Student.h"
 
-
-
 /*----------------------START OF Hash table ---------------------*/
-typedef struct hashnode hashnode;
+typedef struct hashnode hashnode;	/*Define struct as data type*/
 
-struct hashnode{
-	Student value;
-	hashnode* next;
-};
+struct hashnode{	/*Struct that is contained in each slot of */
+	Student value;	/* hashtable. It contains a pointer to the */
+	hashnode* next;	/*stored student and pointer to implement  */
+};					/* seperate chaining					   */
+
 
 typedef struct{
 	hashnode* array;	/*Array of pointer to Student lists	*/

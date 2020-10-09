@@ -1,3 +1,4 @@
+/*File that contains source code of various functions*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -22,13 +23,13 @@ void reset(){
 }
 
 int line_counter(char* input){
-	FILE* fp = fopen(input, "r");
+	FILE* fp = fopen(input, "r");	/*Create pointer to opened file*/
 	int counter = 0;
 	int value;
-	while((value = fgetc(fp)) != EOF){
+	while((value = fgetc(fp)) != EOF){	/*Each time new line is found increase counter*/
 		if(value == '\n')	counter++;
 	}
-	fclose(fp);
+	fclose(fp);						/*Close file and free allocated space*/
 	
 	return counter;
 }
@@ -46,14 +47,23 @@ void read_and_insert(char* input, int number_of_lines, Headhash head){
 		size = 0;
 		getline(&line, &size, fp);
 		for(int j = 0; j <= 5; j++){
-			args[j] = strtok(line, delim);
-			// line = NULL;
+			args[j] = strtok(line, delim);	/*Parse data with respect to delim character*/
 		}
+
+		/*Insert acquired data as a student object to already existing hashtable*/
 		hashtable_insert(student_create(atoi(args[0]), args[1], args[2], atoi(args[3]), atoi(args[4]), atoi(args[5])), head);
 		free(line);
 	}
+
 	fclose(fp);
 
 	return;
 }
+
+void usage(const char* command){		/*Print expected command format*/
+	cyan();
+	printf("%s -i <input file> -c <config file>\n",command);
+	reset();
+}
+
 /*----------------- END OF FUNCTIONS--------------------*/
