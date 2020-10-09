@@ -15,24 +15,22 @@
 typedef struct hashnode hashnode;
 
 struct hashnode{
-	int* key;
 	Student value;
 	hashnode* next;
 };
 
 typedef struct{
 	hashnode* array;	/*Array of pointer to Student lists	*/
-	int capacity;		/*How many elemets are inside Array */
 	int size;			/*how big is Array 					*/
 }hashinfo;
 
-typedef hashinfo* Headhash;								/*Element that gives access to hashtable*/
+typedef hashinfo* Headhash;							/*Element that gives access to hashtable*/
 
-Headhash hashtable_create(int n);						/*Creates hashtable of n elemets*/
+Headhash hashtable_create(int n);					/*Creates hashtable of n elemets*/
 
-void hashtable_destroy(Headhash head); 					/*Free all allocated memory of hash table*/
+void hashtable_destroy(Headhash head); 				/*Free all allocated memory of hash table*/
 
-void hashtable_insert(Student s, Headhash head);		/*Insert new Student to hashtable*/
+int hashtable_insert(Student s, Headhash head);		/*Insert new Student to hashtable*/
 
 Student hashtable_find(int student_id, Headhash head);	/*Search for student, if not found print error!*/
 /*----------------------END OF Hash table -----------------------*/

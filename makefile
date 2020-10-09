@@ -13,6 +13,7 @@ CFLAGS = -I$(INCLUDE_PATH)
 #Define text inputs1 and 2
 INPUT1 = input1.txt
 INPUT2 = input2.txt
+CONFIG = configfile.txt
 
 #Define the dependencies
 DEP = 	main.c \
@@ -29,6 +30,8 @@ FULLVAL = --leak-check=full -v
 # The executable programm
 EXEC = mngstd
 
+build : $(EXEC)
+
 $(EXEC): $(OBJS)
 	$(CC) $(OBJS) -o $(EXEC) $(CFLAGS)
 
@@ -37,19 +40,19 @@ $(OBJS_PATH)/%.o: $(SRC_PATH)/%.c
 
 #Run the programm with args1
 run1: $(EXEC)
-	./$(EXEC) $(INPUT)/$(INPUT1)
+	./$(EXEC) -i $(INPUT)/$(INPUT1) -c $(CONFIG)
 
 #Run the programm with args2
 run2: $(EXEC)
-	./$(EXEC) $(INPUT)/$(INPUT2)
+	./$(EXEC) -i $(INPUT)/$(INPUT2) -c $(CONFIG)
 
 #Determine full valgrind
-fvalgrind:
-	valgrind $(FULLVAL) ./$(EXEC)
+fvalgrind: $(EXEC)
+	valgrind $(FULLVAL) ./$(EXEC) -i $(INPUT)/$(INPUT1) -c $(CONFIG)
 
 #Determine simple valgrind
-svalgrind:
-	valgrind ./$(EXEC)
+svalgrind: $(EXEC)
+	valgrind ./$(EXEC) -i $(INPUT)/$(INPUT1) -c $(CONFIG)
 
 #Clean workspace
 clean:
