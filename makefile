@@ -65,4 +65,7 @@ profiling:
 
 #Clean workspace
 clean:
-	rm -f $(OBJS) $(EXEC)
+	{ \
+	rm -f $(OBJS) $(EXEC);\
+	rm -f gmon.out; \
+	}

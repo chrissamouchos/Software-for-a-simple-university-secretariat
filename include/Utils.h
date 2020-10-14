@@ -18,3 +18,8 @@ void read_and_insert(char* input, int number_of_lines, Headhash head);	/*Read fi
 
 void usage(const char* command);	/*Print expected format*/
 /*----------------- END OF FUNCTIONS--------------------*/
+
+/*------------------START OF COMMANDS-------------------*/
+void exiting(Headhash head);
+
+/*------------------END OF COMMANDS---------------------*/

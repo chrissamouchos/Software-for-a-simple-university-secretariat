@@ -66,4 +66,11 @@ void usage(const char* command){		/*Print expected command format*/
 	reset();
 }
 
+void exiting(Headhash head){
+	printf(">>");
+	cyan();
+	printf("\t exit program\n");
+	reset();
+	hashtable_destroy(head);
+}
 /*----------------- END OF FUNCTIONS--------------------*/
