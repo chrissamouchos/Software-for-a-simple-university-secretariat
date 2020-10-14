@@ -8,7 +8,7 @@ INPUT = ./input
 CC = gcc
 
 # Compile options. Το -I<dir> λέει στον compiler να αναζητήσει εκεί include files
-CFLAGS = -I$(INCLUDE_PATH)
+CFLAGS = -I$(INCLUDE_PATH) -pg
 
 #Define text inputs1 and 2
 INPUT1 = input1.txt
@@ -53,6 +53,15 @@ fvalgrind: $(EXEC)
 #Determine simple valgrind
 svalgrind: $(EXEC)
 	valgrind ./$(EXEC) -i $(INPUT)/$(INPUT1) -c $(CONFIG)
+
+#Profile executed code for input1, then show analysis
+profiling:
+	{ \
+	gprof $(EXEC) gmon.out > analysis.txt;\
+	cat analysis.txt;\
+	rm gmon.out;\
+	echo y | command;\
+	}
 
 #Clean workspace
 clean:
