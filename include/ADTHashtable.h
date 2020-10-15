@@ -10,7 +10,7 @@
 #include <string.h>
 #include "Student.h"
 
-/*----------------------START OF Hash table ---------------------*/
+/*----------------------START OF Hash table --------------------*/
 typedef struct hashnode hashnode;	/*Define struct as data type*/
 
 struct hashnode{	/*Struct that is contained in each slot of */

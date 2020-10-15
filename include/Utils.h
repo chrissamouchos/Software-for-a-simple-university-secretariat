@@ -17,9 +17,43 @@ int line_counter(char* input);	/*Count the lines of input file*/
 void read_and_insert(char* input, int number_of_lines, Headhash head);	/*Read file and insert parsed data*/
 
 void usage(const char* command);	/*Print expected format*/
+
+void trim(char* line);
 /*----------------- END OF FUNCTIONS--------------------*/
 
 /*------------------START OF COMMANDS-------------------*/
+/*Array to store all the expected commands*/
+static char* commands[10] = {
+	"insert",
+	"look-up",
+	"delete",
+	"number",
+	"top",
+	"average",
+	"minimum",
+	"count",
+	"postal code",
+	"exit"
+};
+
+enum COMMANDS
+{
+	kINSERT = 0,
+	kLOOKUP,
+	kDELETE,
+	kNUMBER,
+	kTOP,
+	kAVERAGE,
+	kMINIMUM,
+	kCOUNT,
+	kPOSTALCODE,
+	kEXIT,
+	kCOMSNUM,
+	kFALSECOM = -1
+};
+
+int commandcode(char* line);
+
 void exiting(Headhash head);
 
 /*------------------END OF COMMANDS---------------------*/

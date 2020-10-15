@@ -44,28 +44,45 @@ int main(int argc, char** argv){
 	Headhash head = hashtable_create(line_counter(input_file)*SIZE_FACTOR);	/*Create hashtable 			*/
 	read_and_insert(input_file, number_of_lines, head);						/*Read file and insert data	*/
 
-	/*Array to store all the expected commands*/
-	char* commands[10] = {
-		"insert",
-		"look-up",
-		"delete",
-		"number",
-		"top",
-		"average",
-		"minimum",
-		"count",
-		"postal code",
-		"exit"
-	};
-
 	size_t size = 0;	/*size of expected bytes to read, if 0 realloc to suitable size */
 	char* line = NULL;	/*pointer to allocated memory for strings						*/
+	int kill_switch = 0;
+	
+	while(kill_switch != 1){
+		printf(">>");
+		getline(&line, &size, stdin);
+		trim(line);
+		switch(commandcode(line)){
+			case kINSERT:
+		
+			case kLOOKUP:
+		
+			case kDELETE:
+			
+			case kNUMBER:
+			
+			case kTOP:
+			
+			case kAVERAGE:
+			
+			case kMINIMUM:
+			
+			case kCOUNT:
+			
+			case kPOSTALCODE:
 
-	printf(">>");
-	getline(&line, &size, stdin);
+			case kEXIT:
+				exiting(head);
+				kill_switch = 1;
+				break;
 
-	if(strcmp(line, commands[10])) exiting(head);
-
-	free(line);
+			case kFALSECOM:
+				break;
+		}
+		
+		free(line);
+		line = NULL;
+		size = 0;
+	}
 	return 0;
 }

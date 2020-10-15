@@ -19,7 +19,8 @@ CONFIG = configfile.txt
 DEP = 	main.c \
 		ADTHashtable.c \
 		Student.c \
-		Utils.c
+		Utils.c \
+		ADTInvertedIndex.c
 
 #Create the .o file with the needed functions
 OBJS = $(patsubst %.c,$(OBJS_PATH)/%.o,$(DEP))
@@ -67,5 +68,5 @@ profiling:
 clean:
 	{ \
 	rm -f $(OBJS) $(EXEC);\
-	rm -f gmon.out; \
+	rm -f gmon.out;  \
 	}

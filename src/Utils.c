@@ -73,4 +73,17 @@ void exiting(Headhash head){
 	reset();
 	hashtable_destroy(head);
 }
+
+void trim(char* line){
+	int counter = strlen(line);
+	if(line[counter - 1] == '\n')	line[counter - 1] = '\0';
+}
+
+int commandcode(char* line){
+	for(int i = 0; i <= kCOMSNUM; i++){
+		if(strcmp(line, commands[i]) == 0) return i;
+	}
+	return kFALSECOM;
+}
+
 /*----------------- END OF FUNCTIONS--------------------*/
