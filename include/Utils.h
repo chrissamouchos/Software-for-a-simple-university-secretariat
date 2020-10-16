@@ -2,6 +2,7 @@
 #pragma once	/*Include only once*/
 
 #include "ADTHashtable.h"
+#include "ADTInvertedIndex.h"
 
 /*----------------- VARIOUS FUNCTIONS-------------------*/
 void red();		/*Chane printing color to red 	*/
@@ -14,7 +15,7 @@ void reset();	/*Reset color to default		*/
 
 int line_counter(char* input);	/*Count the lines of input file*/
 
-void read_and_insert(char* input, int number_of_lines, Headhash head);	/*Read file and insert parsed data*/
+void read_and_insert(char* input, int number_of_lines, Headhash head, InvIndex inv);	/*Read file and insert parsed data*/
 
 void usage(const char* command);	/*Print expected format*/
 

@@ -8,6 +8,7 @@
 
 #include "ADTHashtable.h"
 #include "Utils.h"
+#include "ADTInvertedIndex.h"
 
 #define SIZE_FACTOR 0.7 /*Factor that co-defines the size of hash table*/
 
@@ -42,7 +43,9 @@ int main(int argc, char** argv){
 	int number_of_lines = line_counter(input_file);	/*count the lines of input file*/
 
 	Headhash head = hashtable_create(line_counter(input_file)*SIZE_FACTOR);	/*Create hashtable 			*/
-	read_and_insert(input_file, number_of_lines, head);						/*Read file and insert data	*/
+	InvIndex inv = invindex_create(); 										/*Create inverted index 	*/
+	read_and_insert(input_file, number_of_lines, head, inv);				/*Read file and insert data	*/
+
 
 	size_t size = 0;	/*size of expected bytes to read, if 0 realloc to suitable size */
 	char* line = NULL;	/*pointer to allocated memory for strings						*/
@@ -84,5 +87,12 @@ int main(int argc, char** argv){
 		line = NULL;
 		size = 0;
 	}
+	
+	// Student s = student_create(1 , "d", "a", 2, 1998, 123);
+	// Headhash head = hashtable_create(10);
+	// InvIndex  inv = invindex_create();
+	// hashtable_insert(s, head);
+	// invindex_insert(inv, s);
+
 	return 0;
 }

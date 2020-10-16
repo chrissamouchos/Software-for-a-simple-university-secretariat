@@ -4,6 +4,7 @@
 
 #include "Utils.h"
 #include "ADTHashtable.h"
+#include "ADTInvertedIndex.h"
 
 /*----------------- VARIOUS FUNCTIONS-------------------*/
 void red(){
@@ -34,7 +35,7 @@ int line_counter(char* input){
 	return counter;
 }
 
-void read_and_insert(char* input, int number_of_lines, Headhash head){
+void read_and_insert(char* input, int number_of_lines, Headhash head, InvIndex inv){
 	FILE* fp = fopen(input, "r"); 		/*Open input file to parse it's data*/
 	char* line = NULL;					/*Temporary store read string		*/
 	size_t size = 0;
@@ -52,6 +53,7 @@ void read_and_insert(char* input, int number_of_lines, Headhash head){
 
 		/*Insert acquired data as a student object to already existing hashtable*/
 		hashtable_insert(student_create(atoi(args[0]), args[1], args[2], atoi(args[3]), atoi(args[4]), atoi(args[5])), head);
+		invindex_insert(inv, student_create(atoi(args[0]), args[1], args[2], atoi(args[3]), atoi(args[4]), atoi(args[5])));
 		free(line);
 	}
 
