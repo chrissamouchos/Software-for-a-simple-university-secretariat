@@ -21,5 +21,5 @@ void student_destroy(Student s);	/*free all allocated memory of student 	*/
 
 int get_student_id(Student s);		/*returns the student_id of s item		*/
 
-void print_student(Student s);
+void print_student(Student s);		/*print all values of student object 	*/
 /*----------------------END OF STUDENT ΕΝΤΙΤΥ--------------------*/

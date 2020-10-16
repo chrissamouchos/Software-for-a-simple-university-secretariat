@@ -37,6 +37,7 @@ static char* commands[10] = {
 	"exit"
 };
 
+/*Enum commands to correspond them with proper operation code*/
 enum COMMANDS
 {
 	kINSERT = 0,
@@ -50,22 +51,26 @@ enum COMMANDS
 	kPOSTALCODE,
 	kEXIT,
 	kCOMSNUM,
-	kFALSECOM = -1
+	kFALSECOM = -1	/*Wrong input*/
 };
 
-int commandcode(char* line);
+int commandcode(char* line);		/*Get op code for given string 					*/
 
-char* command_string(char* line);
+char* command_string(char* line);	/*From given string get string command 			*/
 
-void exiting(Headhash head);
+void exiting(Headhash head);		/*Exit the program and free all allocate memory	*/
 
-void user_insert(char* line, Headhash head, InvIndex inv);
+void user_insert(char* line, Headhash head, InvIndex inv);	/*Insert manually via console new Student object*/
 
-void look_up(char* line, Headhash head);
+void look_up(char* line, Headhash head);	/*Search Student with id, print its values		*/
 
-void number_year(InvIndex inv, char* line);
+void number_year(InvIndex inv, char* line);	/*Print all student_ids of given year 			*/
 
-void year_count(InvIndex inv, char* line);
+void year_count(InvIndex inv, char* line);	/*Print number of students of given year 		*/
 
-void average(InvIndex inv, char* line);
+void average(InvIndex inv, char* line);		/*Compute and print average gpa given the year 	*/
+
+void top(InvIndex inv, char* line);			/*Find and print best num students given the year*/
+
+void min(InvIndex inv, char* line);			/*Print student with minimum gpa given the year */
 /*------------------END OF COMMANDS---------------------*/

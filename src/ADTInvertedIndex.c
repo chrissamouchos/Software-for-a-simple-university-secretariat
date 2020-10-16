@@ -4,8 +4,8 @@
 #include "Student.h"
 
 InvIndex invindex_create(void){
-	InvIndex inv = malloc(sizeof(*inv));
-	inv -> year = -1;
+	InvIndex inv = malloc(sizeof(*inv)); /*Create an invnode 		*/
+	inv -> year = -1;					 /*When no students are enrolled, -1 as flag	*/
 	inv -> size = 0;
 	inv -> students = NULL;
 	inv -> next = NULL;
@@ -14,33 +14,52 @@ InvIndex invindex_create(void){
 }
 
 innerlist* innerlist_create(Student s){
-	innerlist* temp = malloc(sizeof(*temp));
+	innerlist* temp = malloc(sizeof(*temp));	/*Create innerlist node*/
 	temp -> next = NULL;
 	temp -> student = s;
 
 	return temp;
 }
 
+/*Insert in SORTED inner - list with respect to student_gpa*/
 void innerlist_insert(innerlist** list, Student s){
-	innerlist* temp = *list;
-	*list = innerlist_create(s);
-	(*list) -> next = temp;
+	innerlist* temp = *list;	/*Create copy of pointer because *list is passed by reference*/
+	if(*list == NULL){			/*If no student is enrolled									 */
+		*list = innerlist_create(s);
+		(*list) -> next = temp;
+	}
+	else if( (*list) -> student -> gpa < s -> gpa){	/*if we want to enroll in top of inner list*/
+		temp = innerlist_create(s);
+		temp -> next = *list;
+		*list = temp;
+	}
+	else{	/*any other case*/
+		innerlist* prev = temp;
+		temp = temp -> next;
+		while(temp != NULL && temp -> student -> gpa > s -> gpa){
+			prev = temp;
+			temp = temp -> next;
+		}
+		prev -> next = innerlist_create(s);
+		prev -> next -> next = temp;
+	}
 }
 
+/*Insert in SORTED inner - list with respect to year*/
 void invindex_insert(InvIndex inv, Student s){
 	InvIndex prev;
-	if(	((inv -> students == NULL) && (inv -> next == NULL)) || inv -> year == s -> year){
+	if(	((inv -> students == NULL) && (inv -> next == NULL)) || inv -> year == s -> year){	/*List is empty or we want to enroll in first node*/
 		inv -> year = s -> year;
 		inv -> size++;
-		innerlist_insert(&(inv -> students),s);
+		innerlist_insert(&(inv -> students), s);
 	}
-	else if(s -> year < inv -> year){
+	else if(s -> year < inv -> year){	/*we need to add invnode before the next node*/
 		prev = inv;
 		inv = invindex_create();
 		inv -> year = s -> year;
 		inv -> size++;
 		inv -> next = prev;
-		innerlist_insert(&(inv -> students), s);
+		innerlist_insert(&(inv -> students), s);	/*enroll to new invnode			*/
 	}
 	else{
 		prev = inv;

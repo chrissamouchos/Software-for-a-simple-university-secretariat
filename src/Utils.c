@@ -81,7 +81,7 @@ int commandcode(char* line){
 		return -1;
 	}
 	for(int i = 0; i <= kCOMSNUM; i++){
-		if(strcmp(line, commands[i]) == 0 || line[0] == commands[i][0]) return i;
+		if(strcmp(line, commands[i]) == 0 || (line[0] == commands[i][0] && strlen(line) == 1)) return i;
 	}
 	return kFALSECOM;
 }
@@ -94,8 +94,8 @@ char* command_string(char* line){
 
 /*------------------START OF COMMAND FUNCTIONS----------*/
 void user_insert(char* line, Headhash head, InvIndex inv){
-	char* args[7] = {NULL,NULL,NULL,NULL,NULL,NULL,NULL};		/*6 arguments to parse						*/
-	char* delim = " ";	/*arguments are seperated by space character*/
+	char* args[7] = {NULL,NULL,NULL,NULL,NULL,NULL,NULL};	/*6 arguments to parse						*/
+	char* delim = " ";										/*arguments are seperated by space character*/
 	for(int i = 0; i < 7; i++){
 		args[i] = strtok(line, delim);	/*Parse data with respect to delim character*/
 		line = NULL;
@@ -258,4 +258,100 @@ void average(InvIndex inv, char* line){
 		reset();
 	}
 }
+
+void top(InvIndex inv, char* line){
+	char* args[3] = {NULL,NULL, NULL};		/*2 arguments to parse						*/
+	char* delim = " ";					/*arguments are seperated by space character*/
+
+	for(int i = 0; i < 3; i++){
+		args[i] = strtok(line, delim);	/*Parse data with respect to delim character*/
+		line = NULL;
+	}
+	for(int i = 0; i < 3; i++){
+		if( args[i] == NULL){
+			red();
+			printf("\t - Invalid command format for %s\n", args[0]);
+			reset();
+			return;
+		}
+	}
+	int counter = atoi(args[1]);
+	int tyear = atoi(args[2]);
+	if(inv == NULL || inv -> year == -1){
+		red();
+		printf("\t- No students enrolled in %d\n", tyear);
+		reset();
+		return;
+	}
+	
+	while(inv != NULL && inv->year <= tyear){
+		if(inv -> year == tyear){
+			innerlist* temp = inv -> students;
+			counter = counter < inv-> size ? counter : inv->size;
+			for(int i = 0; i < counter; i++){
+				printf("\t - %d\n", temp -> student -> student_id);
+				temp = temp -> next;
+			}
+			return;
+		}
+		inv = inv -> next;
+	}
+	red();
+	printf("\t- No students enrolled in %d\n", tyear);
+	reset();
+}
+
+void min(InvIndex inv, char* line){
+	char* args[2] = {NULL,NULL};		/*2 arguments to parse						*/
+	char* delim = " ";					/*arguments are seperated by space character*/
+
+	for(int i = 0; i < 2; i++){
+		args[i] = strtok(line, delim);	/*Parse data with respect to delim character*/
+		line = NULL;
+	}
+	for(int i = 0; i < 2; i++){
+		if( args[i] == NULL){
+			red();
+			printf("\t - Invalid command format for %s\n", args[0]);
+			reset();
+			return;
+		}
+	}
+	int tyear = atoi(args[1]);
+	if(inv == NULL || inv -> year == -1){
+		red();
+		printf("\t- No students enrolled in %d\n", tyear);
+		reset();
+		return;
+	}
+	while(inv != NULL && inv->year <= tyear){
+		if(inv -> year == tyear){
+			innerlist* start, *end, *iter;
+			start = end = inv -> students;
+			if(start == NULL) {
+				red();
+				printf("\t- No students enrolled in %d\n", tyear);
+				reset();
+				return;
+			}
+			end = end-> next;
+			while(end != NULL){
+				if(start -> student -> gpa != end -> student -> gpa){
+					start = end;
+				}
+				end = end -> next;
+			}
+			for(iter = start; iter != NULL; iter = iter -> next){
+				printf("\t- %d\n", iter -> student -> student_id);
+			}
+			return;
+		}
+		inv = inv -> next;
+	}
+	red();
+	printf("\t- No students enrolled in %d\n", tyear);
+	reset();	
+}
+
+
 /*------------------END OF COMMAND FUNCTIONS------------*/
