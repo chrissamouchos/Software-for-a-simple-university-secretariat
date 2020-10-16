@@ -50,26 +50,16 @@ int hashtable_insert(Student s, Headhash head){	/*Returns 0 in normal insertion,
 Student hashtable_find(int student_id, Headhash head){	/*Search Student object respecting id, if not found, return NULL*/
 	int hash_key = hashfunc(student_id, head);			/*Calculate hash key for hash index								*/
 	if(head -> array[hash_key].value == NULL){			/*Two stages													*/
-		red();
-		printf("ERROR: Student not found!\n");	/*If nothing exists in this hash index, return NULL*/
-		reset();
-		return NULL;
+		return NULL; 							/*If nothing exists in this hash index, return NULL*/
 	}
 	hashnode* iter = &(head -> array[hash_key]);	/*Search all list*/
 	while(iter){
 		if(get_student_id(iter -> value) == student_id)
 		{
-			green();
-			printf("Student found!\n");
-			reset();
 			return iter->value;	/*Found, return pointer to desired object*/
 		}
 		iter = iter->next;
 	}
-
-	red();
-	printf("ERROR: Student not found!\n");	/*If all list is traversed, then object is not found, return NULL*/
-	reset();
 	return NULL;
 }
 

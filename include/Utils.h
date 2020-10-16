@@ -55,6 +55,17 @@ enum COMMANDS
 
 int commandcode(char* line);
 
+char* command_string(char* line);
+
 void exiting(Headhash head);
 
+void user_insert(char* line, Headhash head, InvIndex inv);
+
+void look_up(char* line, Headhash head);
+
+void number_year(InvIndex inv, char* line);
+
+void year_count(InvIndex inv, char* line);
+
+void average(InvIndex inv, char* line);
 /*------------------END OF COMMANDS---------------------*/

@@ -60,8 +60,7 @@ profiling:
 	{ \
 	gprof $(EXEC) gmon.out > analysis.txt;\
 	cat analysis.txt;\
-	rm gmon.out;\
-	echo y | command;\
+	rm -f gmon.out;\
 	}
 
 #Clean workspace

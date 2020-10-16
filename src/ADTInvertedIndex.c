@@ -39,6 +39,7 @@ void invindex_insert(InvIndex inv, Student s){
 		inv = invindex_create();
 		inv -> year = s -> year;
 		inv -> size++;
+		inv -> next = prev;
 		innerlist_insert(&(inv -> students), s);
 	}
 	else{
@@ -48,7 +49,7 @@ void invindex_insert(InvIndex inv, Student s){
 			if(inv->year == s->year){
 				inv -> size++;
 				innerlist_insert(&(inv -> students),s);
-				break;
+				return;
 			}
 			else if(inv -> year > s -> year ){
 				prev -> next = invindex_create();
@@ -56,10 +57,15 @@ void invindex_insert(InvIndex inv, Student s){
 				prev -> next -> size++;
 				innerlist_insert(&(prev -> next -> students), s);
 				prev -> next -> next = inv;
-				break;
+				return;
 			}
 			prev = inv;
 			inv = inv -> next;
 		}
+		inv = invindex_create();
+		inv -> year = s -> year;
+		inv -> size++;
+		prev -> next = inv;
+		innerlist_insert(&(inv -> students), s);
 	}
 }

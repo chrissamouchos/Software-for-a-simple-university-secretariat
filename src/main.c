@@ -50,27 +50,39 @@ int main(int argc, char** argv){
 	size_t size = 0;	/*size of expected bytes to read, if 0 realloc to suitable size */
 	char* line = NULL;	/*pointer to allocated memory for strings						*/
 	int kill_switch = 0;
-	
+	char* temp = NULL;
+
 	while(kill_switch != 1){
 		printf(">>");
 		getline(&line, &size, stdin);
 		trim(line);
-		switch(commandcode(line)){
+		temp = strdup(line);
+		switch(commandcode(command_string(temp))){
 			case kINSERT:
-		
+				user_insert(line, head, inv);
+				break;
+
 			case kLOOKUP:
-		
+				look_up(line, head);
+				break;
+
 			case kDELETE:
 			
 			case kNUMBER:
-			
+				number_year(inv, line);
+				break;
+
 			case kTOP:
 			
 			case kAVERAGE:
+				average(inv, line);
+				break;
 			
 			case kMINIMUM:
 			
 			case kCOUNT:
+				year_count(inv, line);
+				break;
 			
 			case kPOSTALCODE:
 
@@ -84,15 +96,10 @@ int main(int argc, char** argv){
 		}
 		
 		free(line);
+		free(temp);
 		line = NULL;
 		size = 0;
 	}
 	
-	// Student s = student_create(1 , "d", "a", 2, 1998, 123);
-	// Headhash head = hashtable_create(10);
-	// InvIndex  inv = invindex_create();
-	// hashtable_insert(s, head);
-	// invindex_insert(inv, s);
-
 	return 0;
 }

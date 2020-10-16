@@ -6,7 +6,7 @@
 #include "Student.h"
 
 /*----------------- START OF STUDENT--------------------*/
-Student student_create(int student_id, char* first_name, char* last_name, int zip, int year, int gpa){
+Student student_create(int student_id, char* first_name, char* last_name, int zip, int year, float gpa){
 	Student student = malloc(sizeof(*student));		/*Allocate memory for a student object*/
 	student -> student_id = student_id;
 	student -> last_name = strdup(last_name);		/*Copy name to student field*/
@@ -30,5 +30,9 @@ void print_name(Student s){
 
 int get_student_id(Student s){
 	return s -> student_id;
+}
+
+void print_student(Student s){
+	printf("%d %s %s %d %d %.3f", s->student_id, s->last_name, s->first_name, s-> zip, s->year, s->gpa);
 }
 /*-------------- END OF STUDENT ---------------------*/
