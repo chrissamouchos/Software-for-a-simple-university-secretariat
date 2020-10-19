@@ -46,20 +46,21 @@ void innerlist_insert(innerlist** list, Student s){
 }
 
 /*Insert in SORTED inner - list with respect to year*/
-void invindex_insert(InvIndex inv, Student s){
-	InvIndex prev;
+void invindex_insert(InvIndex* ihead, Student s){
+	InvIndex prev, inv = *ihead;
 	if(	((inv -> students == NULL) && (inv -> next == NULL)) || inv -> year == s -> year){	/*List is empty or we want to enroll in first node*/
 		inv -> year = s -> year;
 		inv -> size++;
 		innerlist_insert(&(inv -> students), s);
 	}
-	else if(s -> year < inv -> year){	/*we need to add invnode before the next node*/
+	else if(s -> year < inv -> year){	/*we need to add invnode as the head of the list*/
 		prev = inv;
 		inv = invindex_create();
 		inv -> year = s -> year;
 		inv -> size++;
 		inv -> next = prev;
 		innerlist_insert(&(inv -> students), s);	/*enroll to new invnode			*/
+		*ihead = inv;
 	}
 	else{
 		prev = inv;
@@ -86,5 +87,29 @@ void invindex_insert(InvIndex inv, Student s){
 		inv -> size++;
 		prev -> next = inv;
 		innerlist_insert(&(inv -> students), s);
+	}
+}
+
+
+
+void invindex_destroy(InvIndex inv){
+	InvIndex big_list_iter = inv;
+	innerlist* small_list_iter = inv -> students;
+	int count = 0;
+
+	while(big_list_iter != NULL){
+		innerlist* temp;
+		small_list_iter = big_list_iter -> students;
+		while(small_list_iter != NULL){
+
+			temp = small_list_iter -> next;
+			free(small_list_iter);
+			count++;
+			small_list_iter = temp;
+		}
+		
+		inv = big_list_iter -> next;
+		free(big_list_iter);
+		big_list_iter = inv;
 	}
 }

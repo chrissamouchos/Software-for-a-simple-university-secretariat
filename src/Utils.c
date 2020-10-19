@@ -5,6 +5,7 @@
 #include "Utils.h"
 #include "ADTHashtable.h"
 #include "ADTInvertedIndex.h"
+#include "ADTZipList.h"
 
 /*----------------- VARIOUS FUNCTIONS-------------------*/
 void red(){
@@ -35,7 +36,7 @@ int line_counter(char* input){
 	return counter;
 }
 
-void read_and_insert(char* input, int number_of_lines, Headhash head, InvIndex inv){
+void read_and_insert(char* input, int number_of_lines, Headhash head, InvIndex* inv){
 	FILE* fp = fopen(input, "r"); 		/*Open input file to parse it's data*/
 	char* line = NULL,*temp;					/*Temporary store read string		*/
 	size_t size = 0;
@@ -93,7 +94,7 @@ char* command_string(char* line){
 /*----------------- END OF FUNCTIONS--------------------*/
 
 /*------------------START OF COMMAND FUNCTIONS----------*/
-void user_insert(char* line, Headhash head, InvIndex inv){
+void user_insert(char* line, Headhash head, InvIndex *inv){
 	char* args[7] = {NULL,NULL,NULL,NULL,NULL,NULL,NULL};	/*6 arguments to parse						*/
 	char* delim = " ";										/*arguments are seperated by space character*/
 	for(int i = 0; i < 7; i++){
@@ -130,12 +131,13 @@ void user_insert(char* line, Headhash head, InvIndex inv){
 	}
 }
 
-void exiting(Headhash head){
+void exiting(Headhash head, InvIndex inv){
 	printf(">>");
 	cyan();
 	printf("\t exit program\n");
 	reset();
 	hashtable_destroy(head);
+	invindex_destroy(inv);
 }
 
 void look_up(char* line, Headhash head){
@@ -353,5 +355,47 @@ void min(InvIndex inv, char* line){
 	reset();	
 }
 
+void deletion(InvIndex inv, char* line){
+	//not implemented
+}
 
+void postal(InvIndex inv, char* line){
+	char* args[2] = {NULL,NULL};		/*2 arguments to parse						*/
+	char* delim = " ";	/*arguments are seperated by space character*/
+	for(int i = 0; i < 2; i++){
+		args[i] = strtok(line, delim);	/*Parse data with respect to delim character*/
+		line = NULL;
+	}
+	for(int i = 0; i < 2; i++){
+		if( args[i] == NULL){
+			red();
+			printf("\t - Invalid command format for %s\n", args[0]);
+			reset();
+			return;
+		}
+	}
+	int rank = atoi(args[1]);
+
+	Ziplist z = zip_insert(inv);
+	Ziplist deleteme = z;
+	int counter_d = 0;
+	while(deleteme != NULL) {
+		printf("Zip : %d count : %d\n", deleteme -> Zip, deleteme -> count);
+		counter_d += deleteme -> count;
+		deleteme = deleteme -> next;
+	}
+	printf("%d\n", counter_d);
+	if(z -> Zip == -1){
+		red();
+		printf("\t- No students are enrolled\n");
+		reset();
+	}
+	Ziplist Final = rank_zips(z, rank);
+	printf("\t -");
+	while(Final != NULL){
+		printf("\t%d\n", Final -> Zip);
+		Final = Final -> next;
+	}
+	zip_destroy(Final);
+}
 /*------------------END OF COMMAND FUNCTIONS------------*/

@@ -50,7 +50,7 @@ int main(int argc, char** argv){
 
 	Headhash head = hashtable_create(line_counter(input_file)*SIZE_FACTOR);	/*Create hashtable 			*/
 	InvIndex inv = invindex_create(); 										/*Create inverted index 	*/
-	read_and_insert(input_file, number_of_lines, head, inv);				/*Read file and insert data	*/
+	read_and_insert(input_file, number_of_lines, head, &inv);				/*Read file and insert data	*/
 
 
 	size_t size = 0;		/*size of expected bytes to read, if 0 realloc to suitable size */
@@ -65,7 +65,7 @@ int main(int argc, char** argv){
 		temp = strdup(line);
 		switch(commandcode(command_string(temp))){
 			case kINSERT:
-				user_insert(line, head, inv);
+				user_insert(line, head, &inv);
 				break;
 
 			case kLOOKUP:
@@ -73,6 +73,8 @@ int main(int argc, char** argv){
 				break;
 
 			case kDELETE:
+				deletion(inv, line);
+				break;
 			
 			case kNUMBER:
 				number_year(inv, line);
@@ -95,9 +97,11 @@ int main(int argc, char** argv){
 				break;
 			
 			case kPOSTALCODE:
+				postal(inv, line);
+				break;
 
 			case kEXIT:
-				exiting(head);
+				exiting(head, inv);
 				kill_switch = 1;
 				break;
 
@@ -118,5 +122,6 @@ float parse_config(char* configfile) {
 	float load_factor;
 	FILE* fp = fopen(configfile, "r");
 	fscanf(fp, "%f", &load_factor);
+	fclose(fp);
 	return load_factor;
 }

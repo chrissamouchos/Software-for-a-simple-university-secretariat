@@ -15,7 +15,7 @@ void reset();	/*Reset color to default		*/
 
 int line_counter(char* input);	/*Count the lines of input file*/
 
-void read_and_insert(char* input, int number_of_lines, Headhash head, InvIndex inv);	/*Read file and insert parsed data*/
+void read_and_insert(char* input, int number_of_lines, Headhash head, InvIndex *inv);	/*Read file and insert parsed data*/
 
 void usage(const char* command);	/*Print expected format*/
 
@@ -33,7 +33,7 @@ static char* commands[10] = {
 	"average",
 	"minimum",
 	"count",
-	"postal code",
+	"postal_code",
 	"exit"
 };
 
@@ -58,9 +58,9 @@ int commandcode(char* line);		/*Get op code for given string 					*/
 
 char* command_string(char* line);	/*From given string get string command 			*/
 
-void exiting(Headhash head);		/*Exit the program and free all allocate memory	*/
+void exiting(Headhash head, InvIndex inv);		/*Exit the program and free all allocate memory	*/
 
-void user_insert(char* line, Headhash head, InvIndex inv);	/*Insert manually via console new Student object*/
+void user_insert(char* line, Headhash head, InvIndex* inv);	/*Insert manually via console new Student object*/
 
 void look_up(char* line, Headhash head);	/*Search Student with id, print its values		*/
 
@@ -73,4 +73,8 @@ void average(InvIndex inv, char* line);		/*Compute and print average gpa given t
 void top(InvIndex inv, char* line);			/*Find and print best num students given the year*/
 
 void min(InvIndex inv, char* line);			/*Print student with minimum gpa given the year */
+
+void postal(InvIndex inv, char* line);		/*Print rank of num-th most common zips 		*/
+
+void deletion(InvIndex inv, char* line);	/*Delete a student 								*/	
 /*------------------END OF COMMANDS---------------------*/

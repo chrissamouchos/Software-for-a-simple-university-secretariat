@@ -13,6 +13,7 @@ CFLAGS = -I$(INCLUDE_PATH) -pg
 #Define text inputs1 and 2
 INPUT1 = input1.txt
 INPUT2 = input2.txt
+INPUT300 = input300.txt
 CONFIG = configfile.txt
 
 #Define the dependencies
@@ -20,7 +21,8 @@ DEP = 	main.c \
 		ADTHashtable.c \
 		Student.c \
 		Utils.c \
-		ADTInvertedIndex.c
+		ADTInvertedIndex.c \
+		ADTZipList.c
 
 #Create the .o file with the needed functions
 OBJS = $(patsubst %.c,$(OBJS_PATH)/%.o,$(DEP))
@@ -41,7 +43,7 @@ $(OBJS_PATH)/%.o: $(SRC_PATH)/%.c
 
 #Run the programm with args1
 run1: $(EXEC)
-	./$(EXEC) -i $(INPUT)/$(INPUT1) -c $(CONFIG)
+	./$(EXEC) -i $(INPUT)/$(INPUT300) -c $(CONFIG)
 
 #Run the programm with args2
 run2: $(EXEC)
@@ -49,11 +51,11 @@ run2: $(EXEC)
 
 #Determine full valgrind
 fvalgrind: $(EXEC)
-	valgrind $(FULLVAL) ./$(EXEC) -i $(INPUT)/$(INPUT1) -c $(CONFIG)
+	valgrind $(FULLVAL) ./$(EXEC) -i $(INPUT)/$(INPUT300) -c $(CONFIG)
 
 #Determine simple valgrind
 svalgrind: $(EXEC)
-	valgrind ./$(EXEC) -i $(INPUT)/$(INPUT1) -c $(CONFIG)
+	valgrind ./$(EXEC) -i $(INPUT)/$(INPUT300) -c $(CONFIG)
 
 #Profile executed code for input1, then show analysis
 profiling:
