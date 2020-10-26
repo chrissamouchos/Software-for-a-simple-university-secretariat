@@ -5,35 +5,32 @@ Each sample counts as 0.01 seconds.
 
   %   cumulative   self              self     total           
  time   seconds   seconds    calls  Ts/call  Ts/call  name    
-  0.00      0.00     0.00      150     0.00     0.00  get_student_id
-  0.00      0.00     0.00       82     0.00     0.00  hashfunc
-  0.00      0.00     0.00       80     0.00     0.00  hashtable_insert
-  0.00      0.00     0.00       80     0.00     0.00  innerlist_create
-  0.00      0.00     0.00       80     0.00     0.00  innerlist_insert
-  0.00      0.00     0.00       80     0.00     0.00  invindex_insert
-  0.00      0.00     0.00       80     0.00     0.00  student_create
-  0.00      0.00     0.00       80     0.00     0.00  student_destroy
-  0.00      0.00     0.00       43     0.00     0.00  invindex_create
-  0.00      0.00     0.00       11     0.00     0.00  command_string
-  0.00      0.00     0.00       11     0.00     0.00  commandcode
-  0.00      0.00     0.00       11     0.00     0.00  trim
-  0.00      0.00     0.00        6     0.00     0.00  reset
-  0.00      0.00     0.00        3     0.00     0.00  red
-  0.00      0.00     0.00        3     0.00     0.00  year_count
-  0.00      0.00     0.00        2     0.00     0.00  green
-  0.00      0.00     0.00        2     0.00     0.00  hashtable_find
+  0.00      0.00     0.00      686     0.00     0.00  get_student_id
+  0.00      0.00     0.00      302     0.00     0.00  hashfunc
+  0.00      0.00     0.00      302     0.00     0.00  hashtable_insert
+  0.00      0.00     0.00      302     0.00     0.00  student_create
+  0.00      0.00     0.00      301     0.00     0.00  innerlist_create
+  0.00      0.00     0.00      301     0.00     0.00  innerlist_insert
+  0.00      0.00     0.00      301     0.00     0.00  invindex_insert
+  0.00      0.00     0.00      301     0.00     0.00  student_destroy
+  0.00      0.00     0.00       12     0.00     0.00  invindex_create
+  0.00      0.00     0.00        6     0.00     0.00  command_string
+  0.00      0.00     0.00        6     0.00     0.00  commandcode
+  0.00      0.00     0.00        6     0.00     0.00  trim
+  0.00      0.00     0.00        3     0.00     0.00  reset
   0.00      0.00     0.00        2     0.00     0.00  line_counter
-  0.00      0.00     0.00        2     0.00     0.00  look_up
-  0.00      0.00     0.00        2     0.00     0.00  top
-  0.00      0.00     0.00        1     0.00     0.00  average
+  0.00      0.00     0.00        2     0.00     0.00  user_insert
+  0.00      0.00     0.00        2     0.00     0.00  year_count
   0.00      0.00     0.00        1     0.00     0.00  cyan
   0.00      0.00     0.00        1     0.00     0.00  exiting
+  0.00      0.00     0.00        1     0.00     0.00  green
   0.00      0.00     0.00        1     0.00     0.00  hashtable_create
   0.00      0.00     0.00        1     0.00     0.00  hashtable_destroy
+  0.00      0.00     0.00        1     0.00     0.00  invindex_destroy
   0.00      0.00     0.00        1     0.00     0.00  min
   0.00      0.00     0.00        1     0.00     0.00  parse_config
   0.00      0.00     0.00        1     0.00     0.00  read_and_insert
-  0.00      0.00     0.00        1     0.00     0.00  user_insert
+  0.00      0.00     0.00        1     0.00     0.00  red
 
  %         the percentage of the total running time of the
 time       program used by this function.
@@ -74,130 +71,107 @@ notice and this notice are preserved.
 granularity: each sample hit covers 2 byte(s) no time propagated
 
 index % time    self  children    called     name
-                0.00    0.00       2/150         hashtable_find [17]
-                0.00    0.00     148/150         hashtable_insert [3]
-[1]      0.0    0.00    0.00     150         get_student_id [1]
+                0.00    0.00     686/686         hashtable_insert [3]
+[1]      0.0    0.00    0.00     686         get_student_id [1]
 -----------------------------------------------
-                0.00    0.00       2/82          hashtable_find [17]
-                0.00    0.00      80/82          hashtable_insert [3]
-[2]      0.0    0.00    0.00      82         hashfunc [2]
+                0.00    0.00     302/302         hashtable_insert [3]
+[2]      0.0    0.00    0.00     302         hashfunc [2]
 -----------------------------------------------
-                0.00    0.00       1/80          user_insert [29]
-                0.00    0.00      79/80          read_and_insert [28]
-[3]      0.0    0.00    0.00      80         hashtable_insert [3]
-                0.00    0.00     148/150         get_student_id [1]
-                0.00    0.00      80/82          hashfunc [2]
+                0.00    0.00       2/302         user_insert [15]
+                0.00    0.00     300/302         read_and_insert [25]
+[3]      0.0    0.00    0.00     302         hashtable_insert [3]
+                0.00    0.00     686/686         get_student_id [1]
+                0.00    0.00     302/302         hashfunc [2]
 -----------------------------------------------
-                0.00    0.00      80/80          innerlist_insert [5]
-[4]      0.0    0.00    0.00      80         innerlist_create [4]
+                0.00    0.00       2/302         user_insert [15]
+                0.00    0.00     300/302         read_and_insert [25]
+[4]      0.0    0.00    0.00     302         student_create [4]
 -----------------------------------------------
-                0.00    0.00      80/80          invindex_insert [6]
-[5]      0.0    0.00    0.00      80         innerlist_insert [5]
-                0.00    0.00      80/80          innerlist_create [4]
+                0.00    0.00     301/301         innerlist_insert [6]
+[5]      0.0    0.00    0.00     301         innerlist_create [5]
 -----------------------------------------------
-                0.00    0.00       1/80          user_insert [29]
-                0.00    0.00      79/80          read_and_insert [28]
-[6]      0.0    0.00    0.00      80         invindex_insert [6]
-                0.00    0.00      80/80          innerlist_insert [5]
-                0.00    0.00      42/43          invindex_create [9]
+                0.00    0.00     301/301         invindex_insert [7]
+[6]      0.0    0.00    0.00     301         innerlist_insert [6]
+                0.00    0.00     301/301         innerlist_create [5]
 -----------------------------------------------
-                0.00    0.00       1/80          user_insert [29]
-                0.00    0.00      79/80          read_and_insert [28]
-[7]      0.0    0.00    0.00      80         student_create [7]
+                0.00    0.00       1/301         user_insert [15]
+                0.00    0.00     300/301         read_and_insert [25]
+[7]      0.0    0.00    0.00     301         invindex_insert [7]
+                0.00    0.00     301/301         innerlist_insert [6]
+                0.00    0.00      11/12          invindex_create [9]
 -----------------------------------------------
-                0.00    0.00      80/80          hashtable_destroy [25]
-[8]      0.0    0.00    0.00      80         student_destroy [8]
+                0.00    0.00     301/301         hashtable_destroy [21]
+[8]      0.0    0.00    0.00     301         student_destroy [8]
 -----------------------------------------------
-                0.00    0.00       1/43          main [35]
-                0.00    0.00      42/43          invindex_insert [6]
-[9]      0.0    0.00    0.00      43         invindex_create [9]
+                0.00    0.00       1/12          main [36]
+                0.00    0.00      11/12          invindex_insert [7]
+[9]      0.0    0.00    0.00      12         invindex_create [9]
 -----------------------------------------------
-                0.00    0.00      11/11          main [35]
-[10]     0.0    0.00    0.00      11         command_string [10]
+                0.00    0.00       6/6           main [36]
+[10]     0.0    0.00    0.00       6         command_string [10]
 -----------------------------------------------
-                0.00    0.00      11/11          main [35]
-[11]     0.0    0.00    0.00      11         commandcode [11]
+                0.00    0.00       6/6           main [36]
+[11]     0.0    0.00    0.00       6         commandcode [11]
 -----------------------------------------------
-                0.00    0.00      11/11          main [35]
-[12]     0.0    0.00    0.00      11         trim [12]
+                0.00    0.00       6/6           main [36]
+[12]     0.0    0.00    0.00       6         trim [12]
 -----------------------------------------------
-                0.00    0.00       1/6           user_insert [29]
-                0.00    0.00       1/6           exiting [23]
-                0.00    0.00       1/6           average [21]
-                0.00    0.00       1/6           top [20]
-                0.00    0.00       2/6           look_up [19]
-[13]     0.0    0.00    0.00       6         reset [13]
+                0.00    0.00       1/3           exiting [18]
+                0.00    0.00       2/3           user_insert [15]
+[13]     0.0    0.00    0.00       3         reset [13]
 -----------------------------------------------
-                0.00    0.00       1/3           top [20]
-                0.00    0.00       2/3           look_up [19]
-[14]     0.0    0.00    0.00       3         red [14]
+                0.00    0.00       2/2           main [36]
+[14]     0.0    0.00    0.00       2         line_counter [14]
 -----------------------------------------------
-                0.00    0.00       3/3           main [35]
-[15]     0.0    0.00    0.00       3         year_count [15]
+                0.00    0.00       2/2           main [36]
+[15]     0.0    0.00    0.00       2         user_insert [15]
+                0.00    0.00       2/302         student_create [4]
+                0.00    0.00       2/302         hashtable_insert [3]
+                0.00    0.00       2/3           reset [13]
+                0.00    0.00       1/1           red [26]
+                0.00    0.00       1/1           green [19]
+                0.00    0.00       1/301         invindex_insert [7]
 -----------------------------------------------
-                0.00    0.00       1/2           user_insert [29]
-                0.00    0.00       1/2           average [21]
-[16]     0.0    0.00    0.00       2         green [16]
+                0.00    0.00       2/2           main [36]
+[16]     0.0    0.00    0.00       2         year_count [16]
 -----------------------------------------------
-                0.00    0.00       2/2           look_up [19]
-[17]     0.0    0.00    0.00       2         hashtable_find [17]
-                0.00    0.00       2/82          hashfunc [2]
-                0.00    0.00       2/150         get_student_id [1]
+                0.00    0.00       1/1           exiting [18]
+[17]     0.0    0.00    0.00       1         cyan [17]
 -----------------------------------------------
-                0.00    0.00       2/2           main [35]
-[18]     0.0    0.00    0.00       2         line_counter [18]
+                0.00    0.00       1/1           main [36]
+[18]     0.0    0.00    0.00       1         exiting [18]
+                0.00    0.00       1/1           cyan [17]
+                0.00    0.00       1/3           reset [13]
+                0.00    0.00       1/1           hashtable_destroy [21]
+                0.00    0.00       1/1           invindex_destroy [22]
 -----------------------------------------------
-                0.00    0.00       2/2           main [35]
-[19]     0.0    0.00    0.00       2         look_up [19]
-                0.00    0.00       2/2           hashtable_find [17]
-                0.00    0.00       2/3           red [14]
-                0.00    0.00       2/6           reset [13]
+                0.00    0.00       1/1           user_insert [15]
+[19]     0.0    0.00    0.00       1         green [19]
 -----------------------------------------------
-                0.00    0.00       2/2           main [35]
-[20]     0.0    0.00    0.00       2         top [20]
-                0.00    0.00       1/3           red [14]
-                0.00    0.00       1/6           reset [13]
+                0.00    0.00       1/1           main [36]
+[20]     0.0    0.00    0.00       1         hashtable_create [20]
 -----------------------------------------------
-                0.00    0.00       1/1           main [35]
-[21]     0.0    0.00    0.00       1         average [21]
-                0.00    0.00       1/2           green [16]
-                0.00    0.00       1/6           reset [13]
+                0.00    0.00       1/1           exiting [18]
+[21]     0.0    0.00    0.00       1         hashtable_destroy [21]
+                0.00    0.00     301/301         student_destroy [8]
 -----------------------------------------------
-                0.00    0.00       1/1           exiting [23]
-[22]     0.0    0.00    0.00       1         cyan [22]
+                0.00    0.00       1/1           exiting [18]
+[22]     0.0    0.00    0.00       1         invindex_destroy [22]
 -----------------------------------------------
-                0.00    0.00       1/1           main [35]
-[23]     0.0    0.00    0.00       1         exiting [23]
-                0.00    0.00       1/1           cyan [22]
-                0.00    0.00       1/1           hashtable_destroy [25]
-                0.00    0.00       1/6           reset [13]
+                0.00    0.00       1/1           main [36]
+[23]     0.0    0.00    0.00       1         min [23]
 -----------------------------------------------
-                0.00    0.00       1/1           main [35]
-[24]     0.0    0.00    0.00       1         hashtable_create [24]
+                0.00    0.00       1/1           main [36]
+[24]     0.0    0.00    0.00       1         parse_config [24]
 -----------------------------------------------
-                0.00    0.00       1/1           exiting [23]
-[25]     0.0    0.00    0.00       1         hashtable_destroy [25]
-                0.00    0.00      80/80          student_destroy [8]
+                0.00    0.00       1/1           main [36]
+[25]     0.0    0.00    0.00       1         read_and_insert [25]
+                0.00    0.00     300/302         student_create [4]
+                0.00    0.00     300/302         hashtable_insert [3]
+                0.00    0.00     300/301         invindex_insert [7]
 -----------------------------------------------
-                0.00    0.00       1/1           main [35]
-[26]     0.0    0.00    0.00       1         min [26]
------------------------------------------------
-                0.00    0.00       1/1           main [35]
-[27]     0.0    0.00    0.00       1         parse_config [27]
------------------------------------------------
-                0.00    0.00       1/1           main [35]
-[28]     0.0    0.00    0.00       1         read_and_insert [28]
-                0.00    0.00      79/80          student_create [7]
-                0.00    0.00      79/80          hashtable_insert [3]
-                0.00    0.00      79/80          invindex_insert [6]
------------------------------------------------
-                0.00    0.00       1/1           main [35]
-[29]     0.0    0.00    0.00       1         user_insert [29]
-                0.00    0.00       1/80          student_create [7]
-                0.00    0.00       1/80          hashtable_insert [3]
-                0.00    0.00       1/2           green [16]
-                0.00    0.00       1/80          invindex_insert [6]
-                0.00    0.00       1/6           reset [13]
+                0.00    0.00       1/1           user_insert [15]
+[26]     0.0    0.00    0.00       1         red [26]
 -----------------------------------------------
 
  This table describes the call tree of the program, and was sorted by
@@ -290,13 +264,12 @@ notice and this notice are preserved.
 
 Index by function name
 
-  [21] average                [17] hashtable_find         [28] read_and_insert
-  [10] command_string          [3] hashtable_insert       [14] red
-  [11] commandcode             [4] innerlist_create       [13] reset
-  [22] cyan                    [5] innerlist_insert        [7] student_create
-  [23] exiting                 [9] invindex_create         [8] student_destroy
-   [1] get_student_id          [6] invindex_insert        [20] top
-  [16] green                  [18] line_counter           [12] trim
-   [2] hashfunc               [19] look_up                [29] user_insert
-  [24] hashtable_create       [26] min                    [15] year_count
-  [25] hashtable_destroy      [27] parse_config
+  [10] command_string          [3] hashtable_insert       [25] read_and_insert
+  [11] commandcode             [5] innerlist_create       [26] red
+  [17] cyan                    [6] innerlist_insert       [13] reset
+  [18] exiting                 [9] invindex_create         [4] student_create
+   [1] get_student_id         [22] invindex_destroy        [8] student_destroy
+  [19] green                   [7] invindex_insert        [12] trim
+   [2] hashfunc               [14] line_counter           [15] user_insert
+  [20] hashtable_create       [23] min                    [16] year_count
+  [21] hashtable_destroy      [24] parse_config

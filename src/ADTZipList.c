@@ -22,8 +22,6 @@ Ziplist zip_insert(InvIndex inv){
 		temp = inv -> students;
 		while(temp != NULL)
 		{
-			
-
 			temp = temp -> next;
 		}
 		inv = inv -> next;
