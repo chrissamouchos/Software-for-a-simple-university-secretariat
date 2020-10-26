@@ -37,7 +37,7 @@ count 		//Print number of students of given year
 
 average 	//Compute and print average gpa given the year
 
-top			//Find and print best num students given the year
+top		//Find and print best num students given the year
 
 minimum 	//Print student with minimum gpa given the year
 
