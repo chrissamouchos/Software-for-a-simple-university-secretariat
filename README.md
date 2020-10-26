@@ -25,24 +25,24 @@ The makefile provides several options to the user. In bin directory are all the 
 ## Commands
 The implemented command that the user can call are(either by entering the full string or by just typing the first letter):
 ```
-exit		/*Exit the program and free all allocate memory	*/
+exit		//Exit the program and free all allocate memory
 
-insert 		/*Insert manually via console new Student object*/
+insert 		//Insert manually via console new Student object
 
-look-up		/*Search Student with id, print its values		*/
+look-up		//Search Student with id, print its values
 
-number		/*Print all student_ids of given year 			*/
+number		//Print all student_ids of given year
 
-count 		/*Print number of students of given year 		*/
+count 		//Print number of students of given year
 
-average 	/*Compute and print average gpa given the year 	*/
+average 	//Compute and print average gpa given the year
 
-top			/*Find and print best num students given the year*/
+top			//Find and print best num students given the year
 
-minimum 	/*Print student with minimum gpa given the year */
+minimum 	/*Print student with minimum gpa given the year
 
-postal_code /*Print rank of num-th most common zips 		*/
+postal_code //Print rank of num-th most common zips
 
-deletion	/*Delete a student 								*/
+deletion	//Delete a student
 ```
-*Note: deletion is to be implemented and postal_code returns segmentation fault, in later releases this probleb will be fixed.*
+*Note: deletion is to be implemented and postal_code returns segmentation fault, in later releases this problem will be fixed.*
