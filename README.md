@@ -41,7 +41,7 @@ top		//Find and print best num students given the year
 
 minimum 	//Print student with minimum gpa given the year
 
-postal_code //Print rank of num-th most common zips
+postal_code   //Print rank of num-th most common zips
 
 deletion	//Delete a student
 ```
