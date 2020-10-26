@@ -25,24 +25,24 @@ The makefile provides several options to the user. In bin directory are all the 
 ## Commands
 The implemented command that the user can call are(either by entering the full string or by just typing the first letter):
 ```
-void exiting(Headhash head, InvIndex inv);		/*Exit the program and free all allocate memory	*/
+exit		/*Exit the program and free all allocate memory	*/
 
-void user_insert(char* line, Headhash head, InvIndex* inv);	/*Insert manually via console new Student object*/
+insert 		/*Insert manually via console new Student object*/
 
-void look_up(char* line, Headhash head);	/*Search Student with id, print its values		*/
+look-up		/*Search Student with id, print its values		*/
 
-void number_year(InvIndex inv, char* line);	/*Print all student_ids of given year 			*/
+number		/*Print all student_ids of given year 			*/
 
-void year_count(InvIndex inv, char* line);	/*Print number of students of given year 		*/
+count 		/*Print number of students of given year 		*/
 
-void average(InvIndex inv, char* line);		/*Compute and print average gpa given the year 	*/
+average 	/*Compute and print average gpa given the year 	*/
 
-void top(InvIndex inv, char* line);			/*Find and print best num students given the year*/
+top			/*Find and print best num students given the year*/
 
-void min(InvIndex inv, char* line);			/*Print student with minimum gpa given the year */
+minimum 	/*Print student with minimum gpa given the year */
 
-void postal(InvIndex inv, char* line);		/*Print rank of num-th most common zips 		*/
+postal_code /*Print rank of num-th most common zips 		*/
 
-void deletion(InvIndex inv, char* line);	/*Delete a student 								*/
+deletion	/*Delete a student 								*/
 ```
-*Note: deletion is to be implemented*
+*Note: deletion is to be implemented and postal_code returns segmentation fault, in later releases this probleb will be fixed.*
