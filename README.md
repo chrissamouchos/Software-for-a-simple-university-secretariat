@@ -22,8 +22,7 @@ The makefile provides several options to the user. In bin directory are all the 
 -make fvalgrind: check for memory leaks with a full analysis
 -make profiling: can be called **only after run** and produces a gmon.out file. Afterwards the gprof uses that file to create the file analysis.txt that contains full information about function calls and time needed. Also, the results are printed in the screen automatically.
 
-##Commands
-
+## Commands
 The implemented command that the user can call are(either by entering the full string or by just typing the first letter):
 ```
 void exiting(Headhash head, InvIndex inv);		/*Exit the program and free all allocate memory	*/
