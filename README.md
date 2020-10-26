@@ -39,10 +39,10 @@ average 	//Compute and print average gpa given the year
 
 top			//Find and print best num students given the year
 
-minimum 	/*Print student with minimum gpa given the year
+minimum 	//Print student with minimum gpa given the year
 
 postal_code //Print rank of num-th most common zips
 
 deletion	//Delete a student
 ```
-*Note: deletion is to be implemented and postal_code returns segmentation fault, in later releases this problem will be fixed.*
+* *Note: deletion is to be implemented and postal_code returns segmentation fault, in later releases this problem will be fixed.*
